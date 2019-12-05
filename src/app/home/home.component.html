@@ -1,0 +1,204 @@
+<div class="container">
+    <form #angularform="ngForm" (ngSubmit)="submitform(angularform)">
+        <div class="row mt-5">
+            <div class="offset-md-3 col-md-6">
+                <h3 class="offset-md-3">Template driven form</h3>
+                <div class="form-group">
+                    <label>First Name</label> <span class="required"> *</span>
+                    <input type="Fname" class="form-control" placeholder="Enter First Name" required
+                        [(ngModel)]=angular.fname name="fname" #fname="ngModel" minlength="5" maxlength="10"
+                        [ngClass]="{'is-invalid': angularform.submitted && fname.invalid}" pattern="[a-zA-Z ]*"
+                        autocomplete="off">
+                    <div class="invalid-feedback" *ngIf="angularform.submitted && fname.invalid">
+                        <div *ngIf="fname.errors.required">
+                            First name is required
+                        </div>
+                        <div *ngIf="fname.errors.pattern">
+                            numbers and special characters are not allowed
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number</label><span class="required"> *</span>
+                    Phone Number (format: xxxxxxxxxx):
+                    <input type="Mobilenum" class="form-control" placeholder="Enter Mobile Number" required
+                        name=Mobilenum [(ngModel)]=angular.Mobilenum #Mobilenum=ngModel maxlength="10"
+                        pattern="[0-9]{10}" [ngClass]="{'is-invalid': angularform.submitted && Mobilenum.invalid}"
+                        autocomplete="off">
+                    <div class="invalid-feedback" *ngIf="angularform.submitted && Mobilenum.invalid">
+                        <div *ngIf="Mobilenum.errors.required">
+                            Mobile number is required
+                        </div>
+                        <div *ngIf="Mobilenum.errors.pattern">
+                            mobile number should be in format
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label><span class="required"> *</span>
+                    <input type="Email" class="form-control" placeholder="Enter valid Email" required name="Email"
+                        [(ngModel)]="angular.Email" #Email="ngModel"
+                        [ngClass]="{'is-invalid': angularform.submitted && Email.invalid}"
+                        pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" autocomplete="off">
+                    <div class="invalid-feedback" *ngIf="angularform.submitted && Email.invalid">
+                        <div *ngIf="Email.errors.required">
+                            Email is required
+                        </div>
+                        <div *ngIf="Email.errors.pattern">
+                            Email invalid
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label><span class="required"> *</span>
+                    <label class="ml-4">Male </label>
+                    <input class="form-check-input ml-1" type="radio" name="gender" value="male"
+                        [(ngModel)]="angular.gender" #gender="ngModel" required
+                        [ngClass]="{'is-invalid': angularform.submitted && gender.invalid}">
+
+                    <label class="ml-4">female </label>
+                    <input class="form-check-input ml-1" type="radio" name="gender" value="female"
+                        [(ngModel)]="angular.gender" #gender="ngModel" required
+                        [ngClass]="{'is-invalid': angularform.submitted && gender.invalid}">
+                    <div class="invalid-feedback" *ngIf="angularform.submitted && gender.invalid">
+                        <div *ngIf="gender.errors.required">
+                            Gender is required
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputAddress">Address1</label><span class="required"> *</span>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Address1" name="Address1"
+                            [(ngModel)]="angular.Address1" #Address1="ngModel" autocomplete="off" required
+                            [ngClass]="{'is-invalid': angularform.submitted && Address1.invalid}">
+                        <div class="invalid-feedback" *ngIf="angularform.submitted && Address1.invalid">
+                            <div *ngIf="Address1.errors.required">
+                                Address is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" form-group col-md-6 ">
+                        <label for=" inputAddress2">Address2</label><span class="required"> *</span>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Address2" required
+                            name="Address2" [(ngModel)]="angular.Address2" #Address2="ngModel" autocomplete="off"
+                            [ngClass]="{'is-invalid': angularform.submitted && Address2.invalid}">
+                        <div class="invalid-feedback" *ngIf="angularform.submitted && Address2.invalid">
+                            <div *ngIf="Address2.errors.required">
+                                Address is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="countryId">Country</label>
+                        <select id="countryId" class="countries form-control" name="country"
+                            [(ngModel)]="angular.country" #country="ngModel"
+                            [ngClass]="{'is-invalid': angularform.submitted && country.invalid}" required>
+                            <option value="">Select Country</option>
+                        </select>
+                        <div class="invalid-feedback" *ngIf="angularform.submitted && country.invalid">
+                            <div *ngIf="country.errors.required">
+                                country is required
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-4">
+                        <label for="stateId">state</label>
+                        <select id="stateId" class="states form-control" name="state" [(ngModel)]="angular.state"
+                            #state="ngModel" [ngClass]="{'is-invalid': angularform.submitted && state.invalid}"
+                            required>
+                            <option value="">Select State</option>
+                        </select>
+                        <div class="invalid-feedback" *ngIf="angularform.submitted && state.invalid">
+                            <div *ngIf="state.errors.required">
+                                state is required
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-4">
+                        <label for="cityId">City</label>
+                        <select id="cityId" class="cities form-control" name="city" [(ngModel)]="angular.city"
+                            #city="ngModel" [ngClass]="{'is-invalid': angularform.submitted && city.invalid}" required>
+
+                            <option value="">Select City</option>
+                        </select>
+                        <div class="invalid-feedback" *ngIf="angularform.submitted && city.invalid">
+                            <div *ngIf="city.errors.required">
+                                city is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Username</label><span class="required"> *</span>
+                    <input type="username" class="form-control" placeholder="Enter username name" required
+                        name="username" [(ngModel)]="angular.username" #username="ngModel" maxlength="10"
+                        [ngClass]="{'is-invalid': angularform.submitted && username.invalid}" autocomplete="off">
+                    <div class="invalid-feedback" *ngIf="angularform.submitted && username.invalid">
+                        <div *ngIf="username.errors.required">
+                            username is required
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password1">Password</label><span class="required"> *</span>
+                    <div class="input-group">
+                        <input [type]="passwordVisible ? 'password': 'text'" id="password1" class="form-control"
+                            name="password" [(ngModel)]="angular.password" #password="ngModel"
+                            [ngClass]="{'is-invalid': angularform.submitted && password.invalid}" required
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" autocomplete="off" maxlength="10" />
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" (click)="showpassword()" style="cursor: pointer">
+                                <i class="fa" [ngClass]="{'fa-eye':! passwordVisible, 'fa-eye-slash': passwordVisible}"
+                                    aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div *ngIf="angularform.submitted && password.invalid" class="invalid-feedback">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                            <div *ngIf="password.errors.pattern">Must contain at least one number and one uppercase
+                                and
+                                lowercase letter, and at least 8 or more characters.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class=" form-group">
+                    <label for="confirmPassword">Confirm Password</label><span class="required"> *</span>
+                    <input type="password" class="form-control" name="confirmPassword"
+                        [(ngModel)]="angular.confirmPassword" #confirmPassword="ngModel"
+                        [ngClass]="{ 'is-invalid': angularform.submitted && confirmPassword.invalid }" required
+                        pattern="{{ password.value }}" autocomplete="off" />
+                    <div *ngIf="angularform.submitted && confirmPassword.invalid" class="invalid-feedback">
+                        <div *ngIf="confirmPassword.errors.required">Confirm Password is required</div>
+                        <div *ngIf="confirmPassword.errors.pattern">Password & Confirm Password does not match.
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row m-0 p-0">
+                    <div class="align-self-end ml-auto">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

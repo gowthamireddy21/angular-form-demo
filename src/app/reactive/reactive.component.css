@@ -1,0 +1,12 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 50%;
+  margin: auto;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
